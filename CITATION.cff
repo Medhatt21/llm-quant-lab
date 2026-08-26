@@ -17,8 +17,8 @@ authors:
     affiliation: American University of Sharjah
 repository-code: 'https://github.com/Medhatt21/llm-quant-lab'
 license: MIT
-# Fill in after Zenodo mints the DOI for the first release, then commit:
-#   doi: 10.5281/zenodo.XXXXXXX
+# Concept DOI: always resolves to the newest release.
+doi: 10.5281/zenodo.22116400
 preferred-citation:
   type: conference-paper
   title: >-

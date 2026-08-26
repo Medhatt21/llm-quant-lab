@@ -1,6 +1,6 @@
 # LLM-Quant-Lab
 
-[![DOI](https://zenodo.org/badge/DOI/ZENODO_DOI_PLACEHOLDER.svg)](https://doi.org/ZENODO_DOI_PLACEHOLDER)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22116400.svg)](https://doi.org/10.5281/zenodo.22116400)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A cross-hardware quantization validation framework for large language models. LLM-Quant-Lab automates post-training quantization experiments with deterministic reproducibility, structured knowledge graph navigation, and full-stack experiment management.
