@@ -1,0 +1,42 @@
+# LLM Quant Lab - vLLM ROCm Container
+# For serving quantized models with vLLM on AMD GPUs
+
+FROM rocm/vllm-dev:nightly
+
+# Environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+# Install additional dependencies
+RUN pip install --no-cache-dir \
+    httpx \
+    pydantic \
+    python-dotenv
+
+# Set working directory
+WORKDIR /app
+
+# Copy only what's needed for vLLM serving
+COPY src/config/ ./src/config/
+
+# Create model directory
+RUN mkdir -p /models
+
+# Environment variables for vLLM
+ENV HF_HOME="/models" \
+    TRANSFORMERS_CACHE="/models" \
+    VLLM_USE_ROCM=1
+
+# Expose vLLM server port
+EXPOSE 8000
+
+# Health check for vLLM server
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# Default entrypoint - starts vLLM server
+# Model path should be provided via environment variable or command override
+ENTRYPOINT ["python", "-m", "vllm.entrypoints.openai.api_server"]
+
+# Default arguments (model should be overridden)
+CMD ["--model", "/models/quantized_model", "--host", "0.0.0.0", "--port", "8000"]

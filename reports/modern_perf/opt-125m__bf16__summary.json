@@ -1,0 +1,17 @@
+{
+  "model": "facebook/opt-125m",
+  "format": "bf16",
+  "gpu": "7",
+  "duration_s": 32,
+  "tokens_per_second": null,
+  "requests_per_second": null,
+  "model_weight_gb": null,
+  "host_ram_gb": 2.2,
+  "peak_vram_gb": 3.1,
+  "mean_gpu_util_pct": null,
+  "active_power_w": 172.2,
+  "peak_power_w": 203.0,
+  "energy_per_1k_tok_j": null,
+  "n_power_samples": 62,
+  "vllm_bench": {}
+}

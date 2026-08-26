@@ -1,0 +1,23 @@
+{
+  "model": "mistralai/Mixtral-8x7B-v0.1",
+  "format": "fp8",
+  "gpu": "7",
+  "duration_s": 169,
+  "tokens_per_second": 13755.9,
+  "requests_per_second": 11.940918039532043,
+  "model_weight_gb": 43.75,
+  "host_ram_gb": 8.8,
+  "peak_vram_gb": 181.1,
+  "mean_gpu_util_pct": 58.9,
+  "active_power_w": 429.8,
+  "peak_power_w": 753.0,
+  "energy_per_1k_tok_j": 31.25,
+  "n_power_samples": 334,
+  "vllm_bench": {
+    "elapsed_time": 16.749130957759917,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 11.940918039532043,
+    "tokens_per_second": 13755.937581540913
+  }
+}

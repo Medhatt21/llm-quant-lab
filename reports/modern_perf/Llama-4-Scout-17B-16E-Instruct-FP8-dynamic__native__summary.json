@@ -1,0 +1,23 @@
+{
+  "model": "RedHatAI/Llama-4-Scout-17B-16E-Instruct-FP8-dynamic",
+  "format": "native",
+  "gpu": "7",
+  "duration_s": 219,
+  "tokens_per_second": 10669.6,
+  "requests_per_second": 9.261767967723268,
+  "model_weight_gb": 109.35,
+  "host_ram_gb": 107.9,
+  "peak_vram_gb": 180.7,
+  "mean_gpu_util_pct": 60.2,
+  "active_power_w": 440.4,
+  "peak_power_w": 753.0,
+  "energy_per_1k_tok_j": 41.27,
+  "n_power_samples": 432,
+  "vllm_bench": {
+    "elapsed_time": 21.59414927009493,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 9.261767967723268,
+    "tokens_per_second": 10669.556698817203
+  }
+}

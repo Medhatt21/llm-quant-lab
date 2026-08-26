@@ -1,0 +1,17 @@
+{
+  "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+  "format": "bf16",
+  "gpu": "3",
+  "duration_s": 112,
+  "mean_power_w": 174.7472118959108,
+  "peak_power_w": 750.0,
+  "approx_energy_j": 19571.68773234201,
+  "n_power_samples": 269,
+  "vllm_bench": {
+    "elapsed_time": 3.2662923205643892,
+    "num_requests": 100,
+    "total_num_tokens": 64000,
+    "requests_per_second": 30.61575333303934,
+    "tokens_per_second": 19594.082133145177
+  }
+}

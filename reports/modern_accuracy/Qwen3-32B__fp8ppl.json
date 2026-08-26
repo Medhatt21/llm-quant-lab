@@ -1,0 +1,7 @@
+{
+  "model": "Qwen/Qwen3-32B",
+  "bf16_ppl": 7.6102,
+  "fp8_ppl": 7.6697,
+  "delta_pct": 0.78,
+  "n_linear_quantized": 449
+}

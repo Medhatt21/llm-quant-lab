@@ -1,0 +1,61 @@
+=== PPL facebook/opt-125m ===
+[fp8ppl] opt-125m BF16 wikitext2 ppl = 27.6499
+[fp8ppl] opt-125m FP8  wikitext2 ppl = 27.9288
+=== PERF facebook/opt-125m ===
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/opt-125m__bf16__summary.json
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/opt-125m__fp8__summary.json
+=== PPL facebook/opt-1.3b ===
+[fp8ppl] opt-1.3b BF16 wikitext2 ppl = 14.6264
+[fp8ppl] opt-1.3b FP8  wikitext2 ppl = 15.1853
+=== PERF facebook/opt-1.3b ===
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/opt-1.3b__bf16__summary.json
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/opt-1.3b__fp8__summary.json
+=== PPL facebook/opt-2.7b ===
+[fp8ppl] opt-2.7b BF16 wikitext2 ppl = 12.4584
+[fp8ppl] opt-2.7b FP8  wikitext2 ppl = 12.6143
+=== PERF facebook/opt-2.7b ===
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/opt-2.7b__bf16__summary.json
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/opt-2.7b__fp8__summary.json
+=== PPL facebook/opt-6.7b ===
+[fp8ppl] opt-6.7b BF16 wikitext2 ppl = 10.8564
+[fp8ppl] opt-6.7b FP8  wikitext2 ppl = 10.9425
+=== PERF facebook/opt-6.7b ===
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/opt-6.7b__bf16__summary.json
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/opt-6.7b__fp8__summary.json
+=== PPL bigscience/bloom-560m ===
+[fp8ppl] bloom-560m BF16 wikitext2 ppl = 31.2395
+[fp8ppl] bloom-560m FP8  wikitext2 ppl = 793.4081
+=== PERF bigscience/bloom-560m ===
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/bloom-560m__bf16__summary.json
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/bloom-560m__fp8__summary.json
+=== PPL bigscience/bloom-1b7 ===
+[fp8ppl] bloom-1b7 BF16 wikitext2 ppl = 19.5038
+[fp8ppl] bloom-1b7 FP8  wikitext2 ppl = 20.1925
+=== PERF bigscience/bloom-1b7 ===
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/bloom-1b7__bf16__summary.json
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/bloom-1b7__fp8__summary.json
+=== PPL bigscience/bloom-3b ===
+[fp8ppl] bloom-3b BF16 wikitext2 ppl = 15.0127
+[fp8ppl] bloom-3b FP8  wikitext2 ppl = 15.4427
+=== PERF bigscience/bloom-3b ===
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/bloom-3b__bf16__summary.json
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/bloom-3b__fp8__summary.json
+=== PPL meta-llama/Llama-2-7b-hf ===
+[fp8ppl] Llama-2-7b-hf BF16 wikitext2 ppl = 5.4733
+[fp8ppl] Llama-2-7b-hf FP8  wikitext2 ppl = 5.5001
+=== PERF meta-llama/Llama-2-7b-hf ===
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Llama-2-7b-hf__bf16__summary.json
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Llama-2-7b-hf__fp8__summary.json
+=== PPL mistralai/Mistral-7B-v0.1 ===
+[fp8ppl] Mistral-7B-v0.1 BF16 wikitext2 ppl = 5.2524
+[fp8ppl] Mistral-7B-v0.1 FP8  wikitext2 ppl = 5.2760
+=== PERF mistralai/Mistral-7B-v0.1 ===
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Mistral-7B-v0.1__bf16__summary.json
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Mistral-7B-v0.1__fp8__summary.json
+=== PPL mistralai/Mixtral-8x7B-v0.1 ===
+[fp8ppl] Mixtral-8x7B-v0.1 BF16 wikitext2 ppl = 3.8424
+[fp8ppl] Mixtral-8x7B-v0.1 FP8  wikitext2 ppl = 3.8947
+=== PERF mistralai/Mixtral-8x7B-v0.1 ===
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Mixtral-8x7B-v0.1__bf16__summary.json
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Mixtral-8x7B-v0.1__fp8__summary.json
+=== corpus_runner done ===

@@ -1,0 +1,13 @@
+=== FP8 PPL google/gemma-7b ===
+[fp8ppl] gemma-7b BF16 wikitext2 ppl = 90468368.0000
+[fp8ppl] gemma-7b FP8  wikitext2 ppl = 88817096.0000
+=== PERF google/gemma-7b ===
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/gemma-7b__bf16__summary.json
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/gemma-7b__fp8__summary.json
+=== FP8 PPL Salesforce/Llama-xLAM-2-70b-fc-r ===
+[fp8ppl] Llama-xLAM-2-70b-fc-r BF16 wikitext2 ppl = 5.2527
+[fp8ppl] Llama-xLAM-2-70b-fc-r FP8  wikitext2 ppl = 5.3164
+=== PERF Salesforce/Llama-xLAM-2-70b-fc-r ===
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Llama-xLAM-2-70b-fc-r__bf16__summary.json
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Llama-xLAM-2-70b-fc-r__fp8__summary.json
+=== expand2 done ===

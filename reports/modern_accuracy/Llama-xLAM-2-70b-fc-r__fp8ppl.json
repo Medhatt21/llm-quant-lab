@@ -1,0 +1,7 @@
+{
+  "model": "Salesforce/Llama-xLAM-2-70b-fc-r",
+  "bf16_ppl": 5.2527,
+  "fp8_ppl": 5.3164,
+  "delta_pct": 1.21,
+  "n_linear_quantized": 561
+}

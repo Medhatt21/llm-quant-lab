@@ -1,0 +1,133 @@
+# LLM Quant Lab - ROCm Development Container
+#
+# Based on Suslov's proven working setup for MI210/MI300X.
+# Uses base image dependencies, adds only LightCompress-specific packages.
+#
+# Build:
+#   docker build -f docker/Dockerfile.rocm-dev -t llm-quant-dev .
+#
+# Run (from project root, detached so Cursor can attach):
+#   docker run -d \
+#     --ipc=host \
+#     --network=host \
+#     --privileged \
+#     --cap-add=CAP_SYS_ADMIN \
+#     --device=/dev/kfd \
+#     --device=/dev/dri \
+#     --shm-size 64G \
+#     --group-add video \
+#     --cap-add=SYS_PTRACE \
+#     --security-opt seccomp=unconfined \
+#     --security-opt apparmor=unconfined \
+#     -v $(pwd):/workspace \
+#     --name llm-quant-devvvvv \
+#     llm-quant-dev \
+#     sleep infinity
+
+# Then in Cursor: Remote Explorer > Attach to Running Container > llm-quant-dev
+#
+# Or for a quick interactive shell:
+#   docker exec -it llm-quant-dev bash
+#
+# Quark quantization example (inside container):
+#   cd /app/Quark/examples/torch/language_modeling/llm_ptq/
+#
+#   # Check accuracy of the original model
+#   python3 quantize_quark.py --model_dir facebook/opt-125m --skip_quantization
+#
+#   # Quantize (w4) the original model and evaluate
+#   python quantize_quark.py \
+#       --model_dir facebook/opt-125m \
+#       --output_dir /workspace/.local/models/opt-125m-INT4 \
+#       --quant_scheme int4_wo_128 \
+#       --quant_algo gptq \
+#       --num_calib_data 512 \
+#       --model_export hf_format
+
+FROM rocm/pytorch:rocm7.2_ubuntu22.04_py3.10_pytorch_release_2.9.1
+
+ENV PYTHONUNBUFFERED=1
+
+# Ensure /opt/venv/bin is first in PATH so Cursor/IDEs find the right Python
+ENV PATH="/opt/venv/bin:${PATH}"
+
+# System packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git vim htop tmux curl wget \
+    libsndfile1 ffmpeg libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Project dependencies not in base image
+# Base image already has: torch, transformers, datasets, accelerate, numpy, etc.
+RUN pip install --no-cache-dir \
+    easydict \
+    loguru \
+    omegaconf \
+    einops \
+    peft \
+    wandb \
+    python-dotenv \
+    pyyaml \
+    jupyter \
+    jupyterlab \
+    ipykernel \
+    matplotlib \
+    seaborn \
+    tqdm \
+    rich \
+    timm \
+    pillow \
+    jsonlines \
+    numexpr \
+    pytablewriter \
+    rouge-score \
+    sacrebleu \
+    scikit-learn \
+    sqlitedict \
+    tqdm-multiprocess \
+    dill \
+    word2number \
+    more_itertools \
+    tiktoken \
+    librosa \
+    imageio \
+    diffusers \
+    qwen-vl-utils \
+    human-eval \
+    fastapi "uvicorn[standard]" \
+    sqlalchemy psycopg2-binary alembic \
+    pydantic pydantic-settings \
+    httpx typer sentencepiece protobuf \
+    pandas plotly kaleido \
+    texttable toml func_timeout \
+    lm-eval nbformat
+
+# Install AMD Quark (production quantization tool)
+RUN git clone https://github.com/amd/Quark.git /app/Quark \
+    && cd /app/Quark && pip install .
+
+# Register the venv Python as the Jupyter kernel so notebooks use the right interpreter.
+# Install to both --prefix=/usr/local AND the venv's own kernel dir, because Jupyter
+# searches the venv path first. The base image ships a broken kernel spec there with
+# a bare "python" that resolves to /bin/python instead of /opt/venv/bin/python.
+RUN python -m ipykernel install --name python3 --display-name "Python 3 (ROCm)" --prefix=/usr/local \
+    && python -m ipykernel install --name python3 --display-name "Python 3 (ROCm)" --prefix=/opt/venv
+
+# Environment variables
+# All caches and artifacts go under /workspace/.local/ (inside the project volume)
+ENV HF_HOME=/workspace/.local/huggingface \
+    TRANSFORMERS_CACHE=/workspace/.local/huggingface \
+    HF_DATASETS_CACHE=/workspace/.local/huggingface/datasets \
+    WANDB_DIR=/workspace/.local/wandb \
+    PYTHONPATH="/workspace/vendors/lightcompress:/workspace" \
+    QUARK_HOME=/app/Quark \
+    QUARK_EXAMPLES=/app/Quark/examples/torch/language_modeling/llm_ptq
+
+WORKDIR /workspace
+
+EXPOSE 8080 8888
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
+    CMD curl -sf http://localhost:8080/api/health || exit 1
+
+CMD ["/bin/bash"]

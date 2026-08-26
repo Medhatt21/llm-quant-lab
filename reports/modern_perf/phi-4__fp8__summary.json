@@ -1,0 +1,23 @@
+{
+  "model": "microsoft/phi-4",
+  "format": "fp8",
+  "gpu": "7",
+  "duration_s": 127,
+  "tokens_per_second": 17635.7,
+  "requests_per_second": 15.308725413225693,
+  "model_weight_gb": 14.62,
+  "host_ram_gb": 6.1,
+  "peak_vram_gb": 181.4,
+  "mean_gpu_util_pct": 65.3,
+  "active_power_w": 464.7,
+  "peak_power_w": 753.0,
+  "energy_per_1k_tok_j": 26.35,
+  "n_power_samples": 250,
+  "vllm_bench": {
+    "elapsed_time": 13.064444922842085,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 15.308725413225693,
+    "tokens_per_second": 17635.651676036
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "model": "meta-llama/Llama-2-7b-hf",
+  "bf16_ppl": 5.4733,
+  "fp8_ppl": 5.5001,
+  "delta_pct": 0.49,
+  "n_linear_quantized": 225
+}

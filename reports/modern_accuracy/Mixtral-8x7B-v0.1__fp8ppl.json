@@ -1,0 +1,7 @@
+{
+  "model": "mistralai/Mixtral-8x7B-v0.1",
+  "bf16_ppl": 3.8424,
+  "fp8_ppl": 3.8947,
+  "delta_pct": 1.36,
+  "n_linear_quantized": 129
+}

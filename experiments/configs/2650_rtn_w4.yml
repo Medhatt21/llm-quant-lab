@@ -1,0 +1,40 @@
+# LLM-Quant-Lab experiment 2650
+# Auto-generated from reproduction_results.csv by scripts/generate_configs.py.
+# Method: RTN, model: facebook/opt-30b, bit width: 4
+#
+# Run inside the dev container:
+#   cd /workspace/vendors/lightcompress
+#   python -m llmc --config /workspace/experiments/configs/2650.yml --task_id 0
+
+base:
+    seed: &seed 42
+model:
+    type: Opt
+    path: facebook/opt-30b
+    torch_dtype: auto
+calib:
+    name: wikitext2
+    download: True
+    n_samples: 128
+    bs: 1
+    seq_len: 2048
+    preproc: wikitext2_gptq
+    seed: *seed
+eval:
+    eval_pos: [pretrain, fake_quant]
+    name: wikitext2
+    download: True
+    bs: 1
+    seq_len: 2048
+    inference_per_block: False
+quant:
+    method: RTN
+    weight:
+        bit: 4
+        symmetric: False
+        granularity: per_group
+        group_size: 128
+    quant_out: True
+save:
+    save_fake: False
+    save_path: /workspace/.local/models/2650-rtn-w4

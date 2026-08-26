@@ -1,0 +1,51 @@
+# =============================================================================
+# LLM-Quant-Lab — CUDA reproduction arm.
+#
+# Self-contained image for running the IISWC 2026 paired-hardware reproduction
+# on an NVIDIA host (H100/A100). Produces results numerically comparable to
+# the AMD ROCm column under matched software hashes.
+#
+# Build:
+#   docker build -f docker/Dockerfile.cuda-arm -t llm-quant-cuda-arm:iiswc26 .
+#
+# Run (assumes the repo is bind-mounted at /workspace):
+#   docker run --rm --gpus all \
+#       -v $(pwd):/workspace \
+#       -v $HOME/.cache/huggingface:/root/.cache/huggingface \
+#       -e HF_TOKEN \
+#       -w /workspace \
+#       llm-quant-cuda-arm:iiswc26 \
+#       bash scripts/run_cuda_arm.sh experiments/configs/gptq_opt125m.yml
+# =============================================================================
+FROM nvcr.io/nvidia/pytorch:24.08-py3
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    HF_HOME=/root/.cache/huggingface \
+    PYTHONPATH=/workspace/vendors/lightcompress:/workspace
+
+# vLLM commit pinned to match the ROCm-side AMD column. Update both this
+# image and REPRODUCIBILITY.md together.
+ARG VLLM_VERSION=0.11.2
+ARG TRANSFORMERS_VERSION=5.1.0
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        git \
+        rsync \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir \
+        "vllm==${VLLM_VERSION}" \
+        "transformers==${TRANSFORMERS_VERSION}" \
+        accelerate \
+        datasets \
+        "lm-eval[api]>=0.4.0" \
+        loguru \
+        easydict \
+        numpy \
+        pandas
+
+WORKDIR /workspace
+CMD ["/bin/bash"]

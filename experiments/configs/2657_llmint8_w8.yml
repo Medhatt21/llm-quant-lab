@@ -1,0 +1,44 @@
+# LLM-Quant-Lab experiment 2657
+# Auto-generated from reproduction_results.csv by scripts/generate_configs.py.
+# Method: LLMINT8, model: facebook/opt-iml-30b, bit width: 8
+#
+# Run inside the dev container:
+#   cd /workspace/vendors/lightcompress
+#   python -m llmc --config /workspace/experiments/configs/2657.yml --task_id 0
+
+base:
+    seed: &seed 42
+model:
+    type: Opt
+    path: facebook/opt-iml-30b
+    torch_dtype: auto
+calib:
+    name: wikitext2
+    download: True
+    n_samples: 128
+    bs: 1
+    seq_len: 2048
+    preproc: wikitext2_gptq
+    seed: *seed
+eval:
+    eval_pos: [pretrain, fake_quant]
+    name: wikitext2
+    download: True
+    bs: 1
+    seq_len: 2048
+    inference_per_block: False
+quant:
+    method: LlmInt8
+    weight:
+        bit: 8
+        symmetric: True
+        granularity: per_channel
+    act:
+        bit: 8
+        symmetric: True
+        granularity: per_token
+    special:
+        threshold: 6.0
+save:
+    save_fake: False
+    save_path: /workspace/.local/models/2657-llmint8-w8

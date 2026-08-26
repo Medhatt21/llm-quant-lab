@@ -1,0 +1,23 @@
+{
+  "model": "Qwen/Qwen3-32B",
+  "format": "fp8",
+  "gpu": "7",
+  "duration_s": 184,
+  "tokens_per_second": 9997.5,
+  "requests_per_second": 8.678411250188095,
+  "model_weight_gb": 31.98,
+  "host_ram_gb": 7.0,
+  "peak_vram_gb": 185.7,
+  "mean_gpu_util_pct": 71.5,
+  "active_power_w": 564.0,
+  "peak_power_w": 753.0,
+  "energy_per_1k_tok_j": 56.41,
+  "n_power_samples": 362,
+  "vllm_bench": {
+    "elapsed_time": 23.045692838728428,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 8.678411250188095,
+    "tokens_per_second": 9997.529760216685
+  }
+}

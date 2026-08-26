@@ -1,0 +1,12 @@
+# =============================================================================
+# LLM Quant Lab - vLLM Dockerfile (CUDA)
+# =============================================================================
+FROM vllm/vllm-openai:latest
+
+ENV HF_HOME=/app/.local/cache \
+    TRANSFORMERS_CACHE=/app/.local/cache
+
+RUN mkdir -p /app/.local/models /app/.local/cache
+
+EXPOSE 8000
+ENTRYPOINT ["python", "-m", "vllm.entrypoints.openai.api_server"]

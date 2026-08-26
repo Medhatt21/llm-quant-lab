@@ -1,0 +1,22 @@
+# Parity subset for the controlled cross-hardware comparison (IISWC #414 rebuttal).
+#
+# These configs are run on BOTH platforms under the SAME pinned software stack
+# (torch 2.9.1, transformers 5.1.0, identical vendored LightCompress commit,
+# identical model HF revision, identical calibration set + seed, identical eval
+# settings). Each is run at seeds 42/43/44 (n=3) on each platform.
+#
+# Rationale: OPT-125M and OPT-2.7B GPTQ/RTN are the cleanest controls — small,
+# ungated, deterministic eval, already present in the corpus. GPTQ is
+# calibration-sensitive (varies with seed); RTN is deterministic (a
+# process-reproducibility check). Together they isolate the two questions a
+# reviewer cares about: does the AMD/NVIDIA delta vanish under a matched stack
+# (portability), and is the RTN "anomaly" hardware- or toolkit-induced.
+#
+# Column produced per run: reports/cuda_arm/cuda_results.csv (NVIDIA arm) and
+# reports/trial_repeats/<name>_trials.csv (AMD arm). Merge with
+# scripts/merge_paired_results.py (keys on experiment_id; flags stack_matched).
+
+experiments/configs/2525_gptq_w4.yml   # GPTQ-W4  OPT-125M   (calibration-sensitive control)
+experiments/configs/2542_rtn_w4.yml    # RTN-W4   OPT-125M   (deterministic control; the anomaly cell)
+experiments/configs/2528_gptq_w4.yml   # GPTQ-W4  OPT-2.7B   (larger dense, own-NVIDIA already exists)
+experiments/configs/2545_rtn_w4.yml    # RTN-W4   OPT-2.7B   (deterministic, larger dense)

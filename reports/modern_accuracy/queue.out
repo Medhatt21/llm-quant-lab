@@ -1,0 +1,7 @@
+[acc] waiting for GPU (no running llmc) before qwen3_32b_gptq_w4 ...
+[acc] === running qwen3_32b_gptq_w4 ===
+[acc] qwen3_32b_gptq_w4: fp16=7.612196445465088 quant=7.612196445465088 delta=0.00% (2321s)
+[acc] waiting for GPU (no running llmc) before qwen3_32b_smoothquant_w8 ...
+[acc] === running qwen3_32b_smoothquant_w8 ===
+[acc] qwen3_32b_smoothquant_w8: fp16=7.612196445465088 quant=7.612196445465088 delta=0.00% (401s)
+[acc] all done -> /data/llm-quant-lab/reports/modern_accuracy/results.csv

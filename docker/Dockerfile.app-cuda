@@ -1,0 +1,52 @@
+# =============================================================================
+# LLM Quant Lab - Application Dockerfile (CUDA)
+# Base: nvcr.io/nvidia/pytorch:25.12-py3  (NGC monthly, CUDA 12.x)
+# =============================================================================
+
+# BASE_IMAGE must be provided via --build-arg or docker-compose .env
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE} AS base
+
+WORKDIR /app
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    UV_SYSTEM_PYTHON=1
+
+# System dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    vim tmux zip unzip wget git cmake build-essential curl \
+    libibverbs-dev ca-certificates iproute2 ffmpeg libsm6 libxext6 \
+    libpq-dev ninja-build \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN python -m pip install --upgrade pip && pip install packaging ninja uv
+
+# Dependencies - skip torch (already in NGC image)
+COPY pyproject.toml uv.lock* README.md ./
+RUN uv sync --frozen --no-dev --no-compile-bytecode 2>/dev/null || uv sync --no-dev --no-compile-bytecode
+
+RUN pip install --no-cache-dir jupyterlab ipywidgets lm-eval
+
+# Application code
+COPY src/ ./src/
+COPY papers/ ./papers/
+COPY examples/ ./examples/
+COPY alembic/ ./alembic/
+COPY alembic.ini ./
+
+RUN mkdir -p /app/.local/models /app/.local/data /app/.local/cache /app/reports /app/outputs
+
+# DB_URL / DATABASE_URL must be provided at runtime via docker-compose environment
+ENV PYTHONPATH="/app:$PYTHONPATH" \
+    HF_HOME="/app/.local/cache" \
+    TRANSFORMERS_CACHE="/app/.local/cache" \
+    HF_DATASETS_CACHE="/app/.local/data"
+
+RUN rm -rf /root/.cache/pip /tmp/*
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import torch; print('PyTorch OK')" || exit 1

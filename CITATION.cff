@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+title: >-
+  LLM-Quant-Lab: Cross-Hardware Reproducibility Characterization of LLM
+  Post-Training Quantization
+message: >-
+  If you use this artifact, please cite the IISWC 2026 paper below.
+type: software
+authors:
+  - given-names: Medhat
+    family-names: Abouzeid
+    affiliation: American University of Sharjah
+  - given-names: Ihab
+    family-names: Amer
+    affiliation: American University of Sharjah
+  - given-names: Fadil
+    family-names: Pasha
+    affiliation: American University of Sharjah
+repository-code: 'https://github.com/Medhatt21/llm-quant-lab'
+license: MIT
+# Fill in after Zenodo mints the DOI for the first release, then commit:
+#   doi: 10.5281/zenodo.XXXXXXX
+preferred-citation:
+  type: conference-paper
+  title: >-
+    Tools-LLM-Quant-Lab: An Open Tool for Cross-Hardware Reproducibility
+    Characterization of LLM Post-Training Quantization on AMD ROCm
+  authors:
+    - given-names: Medhat
+      family-names: Abouzeid
+      affiliation: American University of Sharjah
+    - given-names: Ihab
+      family-names: Amer
+      affiliation: American University of Sharjah
+    - given-names: Fadil
+      family-names: Pasha
+      affiliation: American University of Sharjah
+  collection-title: >-
+    IEEE International Symposium on Workload Characterization (IISWC)
+  year: 2026

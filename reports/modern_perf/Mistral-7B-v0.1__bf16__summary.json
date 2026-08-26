@@ -1,0 +1,23 @@
+{
+  "model": "mistralai/Mistral-7B-v0.1",
+  "format": "bf16",
+  "gpu": "7",
+  "duration_s": 100,
+  "tokens_per_second": 19644.2,
+  "requests_per_second": 17.05226364242142,
+  "model_weight_gb": 13.5,
+  "host_ram_gb": 11.3,
+  "peak_vram_gb": 180.9,
+  "mean_gpu_util_pct": 66.5,
+  "active_power_w": 454.0,
+  "peak_power_w": 751.0,
+  "energy_per_1k_tok_j": 23.11,
+  "n_power_samples": 198,
+  "vllm_bench": {
+    "elapsed_time": 11.728648125194013,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 17.05226364242142,
+    "tokens_per_second": 19644.207716069475
+  }
+}

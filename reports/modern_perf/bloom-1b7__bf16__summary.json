@@ -1,0 +1,23 @@
+{
+  "model": "bigscience/bloom-1b7",
+  "format": "bf16",
+  "gpu": "7",
+  "duration_s": 87,
+  "tokens_per_second": 39885.0,
+  "requests_per_second": 34.62236821446852,
+  "model_weight_gb": 3.21,
+  "host_ram_gb": 4.0,
+  "peak_vram_gb": 180.1,
+  "mean_gpu_util_pct": 59.3,
+  "active_power_w": 326.8,
+  "peak_power_w": 752.0,
+  "energy_per_1k_tok_j": 8.19,
+  "n_power_samples": 171,
+  "vllm_bench": {
+    "elapsed_time": 5.7766123553738,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 34.62236821446852,
+    "tokens_per_second": 39884.96818306774
+  }
+}

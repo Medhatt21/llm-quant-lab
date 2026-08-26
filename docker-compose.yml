@@ -1,0 +1,175 @@
+# =============================================================================
+# LLM Quant Lab - Docker Compose Configuration
+# =============================================================================
+# REQUIRED: Copy config/env.template to .env and fill in all values before running.
+# The stack will FAIL to start if required environment variables are missing.
+# Run `docker compose config` to verify your .env is complete.
+# =============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  # Unified application + API service (GPU-enabled)
+  # Single container: FastAPI backend + PyTorch + quantization runtime.
+  # Experiments run in-process — no docker exec needed.
+  #
+  # Hardware-specific settings come from overlay files:
+  #   ROCm: docker compose -f docker-compose.yml -f docker-compose.rocm.yml up
+  #   CUDA: docker compose -f docker-compose.yml -f docker-compose.cuda.yml up
+  # ---------------------------------------------------------------------------
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.rocm-dev
+    container_name: llm-quant-app
+    environment:
+      # Database connection
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      # W&B integration
+      - WANDB_API_KEY=${WANDB_API_KEY}
+      - WANDB_PROJECT=${WANDB_PROJECT}
+      # HuggingFace — paths match Dockerfile.rocm-dev
+      - HF_HOME=/workspace/.local/huggingface
+      - HF_TOKEN=${HF_TOKEN}
+      - TRANSFORMERS_CACHE=/workspace/.local/huggingface
+      - HF_DATASETS_CACHE=/workspace/.local/huggingface/datasets
+      # Scientist LLM
+      - SCIENTIST_LLM_PROVIDER=${SCIENTIST_LLM_PROVIDER}
+      - SCIENTIST_LLM_BASE_URL=${SCIENTIST_LLM_BASE_URL}
+      - SCIENTIST_LLM_API_KEY=${SCIENTIST_LLM_API_KEY}
+      - SCIENTIST_LLM_MODEL=${SCIENTIST_LLM_MODEL}
+      - SCIENTIST_LLM_TIMEOUT=${SCIENTIST_LLM_TIMEOUT}
+      # Perplexity AI (web search)
+      - PERPLEXITY_API_KEY=${PERPLEXITY_API_KEY}
+      - PERPLEXITY_URL=${PERPLEXITY_URL}
+      - PERPLEXITY_MODEL=${PERPLEXITY_MODEL}
+      # GPU (ROCm)
+      - HIP_VISIBLE_DEVICES=${HIP_VISIBLE_DEVICES}
+      - MAX_CONCURRENT_EXPERIMENTS=${MAX_CONCURRENT_EXPERIMENTS:-0}
+      # Reproduction v2 cohort filter (reproduction-summary?v2_only=1)
+      - REPRODUCTION_V2_MIN_ID=${REPRODUCTION_V2_MIN_ID:-2268}
+      # Logging
+      - LOG_LEVEL=${LOG_LEVEL}
+      - LOG_FORMAT=${LOG_FORMAT}
+    volumes:
+      - .:/workspace
+      - ./${LOCAL_MODELS_DIR}:/workspace/.local/models
+      - ./${LOCAL_DATA_DIR}:/workspace/.local/data
+      - /data/huggingface:/workspace/.local/huggingface
+    ports:
+      - "${API_PORT}:8080"
+      - "${JUPYTER_PORT}:8888"
+    # ROCm GPU access
+    ipc: host
+    shm_size: "16g"
+    cap_add:
+      - SYS_PTRACE
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    group_add:
+      - video
+      - render
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - llm-quant-network
+    stdin_open: true
+    tty: true
+    command: ["uvicorn", "src.api.server:app", "--host", "0.0.0.0", "--port", "8080"]
+
+  # ---------------------------------------------------------------------------
+  # PostgreSQL database
+  # ---------------------------------------------------------------------------
+  db:
+    image: postgres:16-alpine
+    container_name: llm-quant-db
+    command: ["postgres", "-c", "max_connections=200"]
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+      - ./src/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    ports:
+      - "${POSTGRES_PORT_EXTERNAL}:5432"
+    networks:
+      - llm-quant-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ---------------------------------------------------------------------------
+  # Frontend (React dashboard)
+  # ---------------------------------------------------------------------------
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: llm-quant-frontend
+    ports:
+      - "${FRONTEND_PORT}:80"
+    depends_on:
+      - app
+    networks:
+      - llm-quant-network
+
+  # ---------------------------------------------------------------------------
+  # vLLM server for inference - optional profile
+  # Hardware-specific GPU passthrough comes from overlay files
+  # ---------------------------------------------------------------------------
+  vllm:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.vllm-${HARDWARE_PROFILE}
+    container_name: llm-quant-vllm
+    profiles:
+      - vllm
+    environment:
+      - HF_HOME=/app/.local/cache
+      - HF_TOKEN=${HF_TOKEN}
+    volumes:
+      - ./${LOCAL_MODELS_DIR}:/app/.local/models:ro
+      - ./${LOCAL_CACHE_DIR}:/app/.local/cache
+    ports:
+      - "${VLLM_PORT}:8000"
+    networks:
+      - llm-quant-network
+    command:
+      - "--model"
+      - "${VLLM_MODEL}"
+      - "--host"
+      - "0.0.0.0"
+      - "--port"
+      - "8000"
+      - "--dtype"
+      - "auto"
+
+  # ---------------------------------------------------------------------------
+  # pgAdmin for database management - optional profile
+  # ---------------------------------------------------------------------------
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: llm-quant-pgadmin
+    profiles:
+      - admin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    ports:
+      - "${PGADMIN_PORT}:80"
+    networks:
+      - llm-quant-network
+    depends_on:
+      - db
+
+networks:
+  llm-quant-network:
+    driver: bridge

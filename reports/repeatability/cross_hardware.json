@@ -1,0 +1,24 @@
+[
+  {
+    "method": "gptq",
+    "model": "opt125m",
+    "amd_mean": 29.323,
+    "nvidia_mean": 29.2398,
+    "amd_vs_nvidia_pct": 0.2845,
+    "stack_matched": false,
+    "amd_torch": "2.9.1+rocm7.2.0",
+    "nvidia_torch": "2.6.0+cu124",
+    "note": ""
+  },
+  {
+    "method": "rtn",
+    "model": "opt125m",
+    "amd_mean": 30.4717,
+    "nvidia_mean": 30.4717,
+    "amd_vs_nvidia_pct": 0.0,
+    "stack_matched": false,
+    "amd_torch": "2.9.1+rocm7.2.0",
+    "nvidia_torch": "2.6.0+cu124",
+    "note": "exact bitwise agreement"
+  }
+]

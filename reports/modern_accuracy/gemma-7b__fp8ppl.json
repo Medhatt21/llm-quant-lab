@@ -1,0 +1,7 @@
+{
+  "model": "google/gemma-7b",
+  "bf16_ppl": 90468368.0,
+  "fp8_ppl": 88817096.0,
+  "delta_pct": -1.83,
+  "n_linear_quantized": 197
+}

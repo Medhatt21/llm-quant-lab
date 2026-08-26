@@ -1,0 +1,43 @@
+# LLM-Quant-Lab experiment 2581
+# Auto-generated from reproduction_results.csv by scripts/generate_configs.py.
+# Method: AWQ, model: mistralai/Mixtral-8x7B-Instruct-v0.1, bit width: 4
+#
+# Run inside the dev container:
+#   cd /workspace/vendors/lightcompress
+#   python -m llmc --config /workspace/experiments/configs/2581.yml --task_id 0
+
+base:
+    seed: &seed 42
+model:
+    type: Mixtral
+    path: mistralai/Mixtral-8x7B-Instruct-v0.1
+    torch_dtype: auto
+calib:
+    name: pileval
+    download: True
+    n_samples: 128
+    bs: -1
+    seq_len: 512
+    preproc: pileval_awq
+    seed: *seed
+eval:
+    eval_pos: [pretrain, fake_quant]
+    name: wikitext2
+    download: True
+    bs: 1
+    seq_len: 2048
+    inference_per_block: False
+quant:
+    method: Awq
+    weight:
+        bit: 4
+        symmetric: True
+        granularity: per_group
+        group_size: 128
+    special:
+        trans: True
+        trans_version: v2
+        weight_clip: True
+save:
+    save_fake: False
+    save_path: /workspace/.local/models/2581-awq-w4

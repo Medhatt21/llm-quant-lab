@@ -1,0 +1,23 @@
+{
+  "model": "bigscience/bloom-560m",
+  "format": "bf16",
+  "gpu": "7",
+  "duration_s": 84,
+  "tokens_per_second": 65173.4,
+  "requests_per_second": 56.57409981749792,
+  "model_weight_gb": 1.04,
+  "host_ram_gb": 3.9,
+  "peak_vram_gb": 179.8,
+  "mean_gpu_util_pct": 43.5,
+  "active_power_w": 282.3,
+  "peak_power_w": 749.0,
+  "energy_per_1k_tok_j": 4.33,
+  "n_power_samples": 168,
+  "vllm_bench": {
+    "elapsed_time": 3.535186607390642,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 56.57409981749792,
+    "tokens_per_second": 65173.362989757596
+  }
+}

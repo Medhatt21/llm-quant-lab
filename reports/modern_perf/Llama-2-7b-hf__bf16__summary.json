@@ -1,0 +1,23 @@
+{
+  "model": "meta-llama/Llama-2-7b-hf",
+  "format": "bf16",
+  "gpu": "7",
+  "duration_s": 98,
+  "tokens_per_second": 16047.2,
+  "requests_per_second": 13.929840480895678,
+  "model_weight_gb": 12.55,
+  "host_ram_gb": 3.3,
+  "peak_vram_gb": 180.9,
+  "mean_gpu_util_pct": 71.2,
+  "active_power_w": 524.6,
+  "peak_power_w": 752.0,
+  "energy_per_1k_tok_j": 32.69,
+  "n_power_samples": 193,
+  "vllm_bench": {
+    "elapsed_time": 14.35766621120274,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 13.929840480895678,
+    "tokens_per_second": 16047.17623399182
+  }
+}

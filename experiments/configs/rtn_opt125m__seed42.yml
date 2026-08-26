@@ -1,0 +1,48 @@
+# RTN (Round-To-Nearest) Baseline Config for OPT-125M
+# 
+# RTN is the naive baseline for quantization comparison.
+# Expected results (from GPTQ paper Table 2):
+#   - OPT-125M RTN 4-bit: ~48.17 perplexity
+#
+# Usage:
+#   Inside container:
+#   cd /workspace/vendors/lightcompress
+#   python -m llmc --config /workspace/experiments/configs/rtn_opt125m.yml --task_id 0
+
+base:
+    seed: 42
+
+model:
+    type: Opt
+    path: facebook/opt-125m
+    torch_dtype: auto
+
+calib:
+    name: wikitext2
+    download: True
+    n_samples: 128
+    bs: 1
+    seq_len: 2048
+    preproc: wikitext2_gptq
+    seed: 42
+
+eval:
+    eval_pos: [pretrain, fake_quant]
+    name: wikitext2
+    download: True
+    bs: 1
+    seq_len: 2048
+    inference_per_block: False
+
+quant:
+    method: RTN
+    weight:
+        bit: 4
+        symmetric: False
+        granularity: per_group
+        group_size: 128
+    quant_out: True
+
+save:
+    save_fake: False
+    save_path: /workspace/.local/models/opt-125m-rtn-w4

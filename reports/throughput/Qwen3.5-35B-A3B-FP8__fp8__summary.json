@@ -1,0 +1,11 @@
+{
+  "model": "Qwen/Qwen3.5-35B-A3B-FP8",
+  "format": "fp8",
+  "gpu": "3",
+  "duration_s": 20,
+  "mean_power_w": 139.6734693877551,
+  "peak_power_w": 175.0,
+  "approx_energy_j": 2793.4693877551017,
+  "n_power_samples": 49,
+  "vllm_bench": {}
+}

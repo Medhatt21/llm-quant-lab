@@ -1,0 +1,32 @@
+# LLM-Quant-Lab experiment 2635
+# Auto-generated from reproduction_results.csv by scripts/generate_configs.py.
+# Method: FP16, model: meta-llama/Llama-2-7b-hf, bit width: 16
+#
+# Run inside the dev container:
+#   cd /workspace/vendors/lightcompress
+#   python -m llmc --config /workspace/experiments/configs/2635.yml --task_id 0
+
+base:
+    seed: &seed 42
+model:
+    type: Llama
+    path: meta-llama/Llama-2-7b-hf
+    torch_dtype: auto
+calib:
+    name: wikitext2
+    download: True
+    n_samples: 128
+    bs: 1
+    seq_len: 2048
+    preproc: wikitext2_gptq
+    seed: *seed
+eval:
+    eval_pos: [pretrain]
+    name: wikitext2
+    download: True
+    bs: 1
+    seq_len: 2048
+    inference_per_block: False
+save:
+    save_fake: False
+    save_path: /workspace/.local/models/2635-fp16-w16

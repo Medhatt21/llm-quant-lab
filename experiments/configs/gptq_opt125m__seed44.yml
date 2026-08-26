@@ -1,0 +1,55 @@
+# GPTQ Quantization Config for OPT-125M
+# 
+# This configuration matches the GPTQ paper reproduction settings.
+# Expected results (from paper Table 2):
+#   - OPT-125M FP16: ~27.65 perplexity
+#   - OPT-125M GPTQ 4-bit: ~31.12 perplexity
+#
+# Usage:
+#   Inside container:
+#   cd /workspace/vendors/lightcompress
+#   python -m llmc --config /workspace/experiments/configs/gptq_opt125m.yml --task_id 0
+
+base:
+    seed: 44
+
+model:
+    type: Opt
+    path: facebook/opt-125m
+    torch_dtype: auto
+
+calib:
+    name: wikitext2
+    download: True
+    n_samples: 128
+    bs: 1
+    seq_len: 2048
+    preproc: wikitext2_gptq
+    seed: 44
+
+eval:
+    eval_pos: [pretrain, fake_quant]
+    name: wikitext2
+    download: True
+    bs: 1
+    seq_len: 2048
+    inference_per_block: False
+
+quant:
+    method: GPTQ
+    weight:
+        bit: 4
+        symmetric: False
+        granularity: per_group
+        group_size: 128
+    special:
+        actorder: True
+        static_groups: False
+        percdamp: 0.01
+        blocksize: 128
+        true_sequential: True
+    quant_out: True
+
+save:
+    save_fake: False
+    save_path: /workspace/.local/models/opt-125m-gptq-w4

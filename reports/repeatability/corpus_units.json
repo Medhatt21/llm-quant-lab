@@ -1,0 +1,14 @@
+{
+  "metric_rows": 174,
+  "unique_configurations": 79,
+  "metric_rows_with_paper_ref": 79,
+  "unique_configurations_with_paper_ref": 76,
+  "metric_rows_by_method": {
+    "fp16": 82,
+    "llmint8": 10,
+    "smoothquant": 29,
+    "awq": 9,
+    "gptq": 29,
+    "rtn": 15
+  }
+}

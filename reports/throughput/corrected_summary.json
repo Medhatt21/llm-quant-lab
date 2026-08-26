@@ -1,0 +1,58 @@
+[
+  {
+    "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+    "format": "bf16",
+    "gpu": "3",
+    "tokens_per_second": 19594.1,
+    "has_valid_benchmark": true,
+    "active_power_w": 270.2,
+    "peak_power_w": 750.0,
+    "reported_mean_power_w": 174.7472118959108,
+    "reported_energy_j_FULL_WINDOW": 19571.7,
+    "energy_per_1k_tokens_j": 13.79,
+    "n_power_samples": 269,
+    "note": ""
+  },
+  {
+    "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+    "format": "fp16",
+    "gpu": "3",
+    "tokens_per_second": 19738.2,
+    "has_valid_benchmark": true,
+    "active_power_w": 277.0,
+    "peak_power_w": 734.0,
+    "reported_mean_power_w": 177.22857142857143,
+    "reported_energy_j_FULL_WINDOW": 20558.5,
+    "energy_per_1k_tokens_j": 14.03,
+    "n_power_samples": 280,
+    "note": ""
+  },
+  {
+    "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+    "format": "fp8",
+    "gpu": "3",
+    "tokens_per_second": null,
+    "has_valid_benchmark": false,
+    "active_power_w": 185.4,
+    "peak_power_w": 213.0,
+    "reported_mean_power_w": 150.792,
+    "reported_energy_j_FULL_WINDOW": 7841.2,
+    "energy_per_1k_tokens_j": null,
+    "n_power_samples": 125,
+    "note": "no valid vLLM benchmark captured (vllm_bench empty)"
+  },
+  {
+    "model": "Qwen/Qwen3.5-35B-A3B-FP8",
+    "format": "fp8",
+    "gpu": "3",
+    "tokens_per_second": null,
+    "has_valid_benchmark": false,
+    "active_power_w": 147.1,
+    "peak_power_w": 175.0,
+    "reported_mean_power_w": 139.6734693877551,
+    "reported_energy_j_FULL_WINDOW": 2793.5,
+    "energy_per_1k_tokens_j": null,
+    "n_power_samples": 49,
+    "note": "no valid vLLM benchmark captured (vllm_bench empty)"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "model": "google/gemma-7b",
+  "format": "fp8",
+  "gpu": "7",
+  "duration_s": 119,
+  "tokens_per_second": 17481.8,
+  "requests_per_second": 15.175210028968712,
+  "model_weight_gb": 8.69,
+  "host_ram_gb": 5.4,
+  "peak_vram_gb": 181.9,
+  "mean_gpu_util_pct": 70.0,
+  "active_power_w": 456.1,
+  "peak_power_w": 752.0,
+  "energy_per_1k_tok_j": 26.09,
+  "n_power_samples": 235,
+  "vllm_bench": {
+    "elapsed_time": 13.17938925512135,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 15.175210028968712,
+    "tokens_per_second": 17481.841953371957
+  }
+}

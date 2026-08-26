@@ -1,0 +1,23 @@
+{
+  "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+  "format": "fp8",
+  "gpu": "7",
+  "duration_s": 116,
+  "tokens_per_second": 23657.3,
+  "requests_per_second": 20.535825555695716,
+  "model_weight_gb": 8.46,
+  "host_ram_gb": 7.0,
+  "peak_vram_gb": 181.0,
+  "mean_gpu_util_pct": 57.6,
+  "active_power_w": 386.9,
+  "peak_power_w": 751.0,
+  "energy_per_1k_tok_j": 16.35,
+  "n_power_samples": 229,
+  "vllm_bench": {
+    "elapsed_time": 9.739077664911747,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 20.535825555695716,
+    "tokens_per_second": 23657.271040161464
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "model": "facebook/opt-125m",
+  "bit": 4,
+  "gpu": "3",
+  "seq_len": 128,
+  "steps": 4,
+  "total_device_us": 15980.913999999813,
+  "gemm_share_pct": 32.93938006299267,
+  "integer_gemm_share_pct": 0.0,
+  "fp16_gemm_share_pct": 32.93938006299267,
+  "top_kernels": [
+    {
+      "name": "aten::linear",
+      "calls": 292,
+      "self_device_us": 2552.411999999971,
+      "device_total_us": 2552.411999999971
+    },
+    {
+      "name": "aten::addmm",
+      "calls": 288,
+      "self_device_us": 2393.2219999999706,
+      "device_total_us": 2393.2219999999706
+    },
+    {
+      "name": "Cijk_Alik_Bljk_HHS_BH_Bias_HA_S_SAV_UserArgs_MT16x32x512_MI16x16x1_SN_LDSB1_AFC1_AFEM1_AFEM1_ASEM1_CLR1_CADS0_DTLA0_DTLB0_DTVA0_DTVB0_EPS0_FDSI0_GRPM1_GRVWA8_GRVWB8_GSUAMBSK_GLS0_ISA942_IU1_K1_LDSTI0_LBSPPA1024_LBSPPB2048_LBSPPM0_LPA16_LPB16_LPM0_LRVW8_LWPMn1_MIAV0_MIWT1_2_MO40_NTn1_NTA0_NTB0_NTC0_NTD4_NTM0_NEPBS16_NLCA1_NLCB1_ONLL1_PGR2_PLR1_PKA1_SIA3_SS1_SPO0_SRVW0_SSO0_SVW1_SK0_SKFTR0_SKXCCM0_TLDS1_ULSGRO0_USL1_UIOFGRO0_USFGROn1_VSn1_VWA1_VWB2_WSGRA0_WSGRB0_WS64_WG16_4_4",
+      "calls": 240,
+      "self_device_us": 2014.9459999999897,
+      "device_total_us": 2014.9459999999897
+    },
+    {
+      "name": "aten::scaled_dot_product_attention",
+      "calls": 48,
+      "self_device_us": 773.2740000000047,
+      "device_total_us": 773.2740000000047
+    },
+    {
+      "name": "aten::_scaled_dot_product_flash_attention",
+      "calls": 48,
+      "self_device_us": 773.2740000000047,
+      "device_total_us": 773.2740000000047
+    },
+    {
+      "name": "aten::_flash_attention_forward",
+      "calls": 48,
+      "self_device_us": 773.2740000000047,
+      "device_total_us": 773.2740000000047
+    },
+    {
+      "name": "aten::cat",
+      "calls": 96,
+      "self_device_us": 731.3879999999842,
+      "device_total_us": 731.3879999999842
+    },
+    {
+      "name": "void at::native::(anonymous namespace)::CatArrayBatchedCopy<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 4, 64, 64>(at::native::(anonymous namespace)::OpaqueType<2u>*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 64, 64>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)",
+      "calls": 96,
+      "self_device_us": 731.3879999999842,
+      "device_total_us": 731.3879999999842
+    },
+    {
+      "name": "attn_fwd",
+      "calls": 48,
+      "self_device_us": 679.2840000000208,
+      "device_total_us": 679.2840000000208
+    },
+    {
+      "name": "aten::layer_norm",
+      "calls": 100,
+      "self_device_us": 464.73599999999533,
+      "device_total_us": 464.73599999999533
+    },
+    {
+      "name": "aten::native_layer_norm",
+      "calls": 100,
+      "self_device_us": 464.73599999999533,
+      "device_total_us": 464.73599999999533
+    },
+    {
+      "name": "void at::native::(anonymous namespace)::vectorized_layer_norm_kernel<c10::Half, float, false>(int, float, c10::Half const*, c10::Half const*, c10::Half const*, float*, float*, c10::Half*)",
+      "calls": 100,
+      "self_device_us": 464.73599999999533,
+      "device_total_us": 464.73599999999533
+    },
+    {
+      "name": "Cijk_Alik_Bljk_HHS_BH_Bias_HA_S_SAV_UserArgs_MT32x64x256_MI16x16x1_SN_LDSB1_AFC1_AFEM1_AFEM1_ASEM1_CLR1_CADS0_DTLA0_DTLB0_DTVA0_DTVB0_EPS0_FDSI0_GRPM1_GRVWA8_GRVWB8_GSUAMBSK_GLS0_ISA942_IU1_K1_LDSTI0_LBSPPA1024_LBSPPB512_LBSPPM0_LPA16_LPB16_LPM0_LRVW8_LWPMn1_MIAV0_MIWT2_1_MO40_NTn1_NTA0_NTB0_NTC0_NTD4_NTM0_NEPBS16_NLCA1_NLCB1_ONLL1_PGR2_PLR1_PKA1_SIA3_SS1_SPO0_SRVW0_SSO0_SVW2_SK0_SKFTR0_SKXCCM0_TLDS1_ULSGRO1_USL1_UIOFGRO0_USFGROn1_VSn1_VWA2_VWB1_WSGRA0_WSGRB0_WS64_WG16_16_1",
+      "calls": 48,
+      "self_device_us": 378.27599999998074,
+      "device_total_us": 378.27599999998074
+    },
+    {
+      "name": "aten::add",
+      "calls": 104,
+      "self_device_us": 329.7059999999897,
+      "device_total_us": 329.7059999999897
+    },
+    {
+      "name": "void at::native::vectorized_elementwise_kernel<8, at::native::CUDAFunctor_add<c10::Half>, std::array<char*, 3ul> >(int, at::native::CUDAFunctor_add<c10::Half>, std::array<char*, 3ul>)",
+      "calls": 100,
+      "self_device_us": 321.4559999999901,
+      "device_total_us": 321.4559999999901
+    },
+    {
+      "name": "aten::relu",
+      "calls": 48,
+      "self_device_us": 222.97400000000152,
+      "device_total_us": 222.97400000000152
+    },
+    {
+      "name": "aten::clamp_min",
+      "calls": 48,
+      "self_device_us": 222.97400000000152,
+      "device_total_us": 222.97400000000152
+    },
+    {
+      "name": "void at::native::vectorized_elementwise_kernel<8, at::native::(anonymous namespace)::launch_clamp_scalar(at::TensorIteratorBase&, c10::Scalar, c10::Scalar, at::native::detail::ClampLimits)::{lambda()#1}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}, std::array<char*, 2ul> >(int, at::native::(anonymous namespace)::launch_clamp_scalar(at::TensorIteratorBase&, c10::Scalar, c10::Scalar, at::native::detail::ClampLimits)::{lambda()#1}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}, std::array<char*, 2ul>)",
+      "calls": 48,
+      "self_device_us": 222.97400000000152,
+      "device_total_us": 222.97400000000152
+    },
+    {
+      "name": "aten::mul",
+      "calls": 52,
+      "self_device_us": 159.94600000000082,
+      "device_total_us": 159.94600000000082
+    },
+    {
+      "name": "aten::matmul",
+      "calls": 4,
+      "self_device_us": 159.1900000000005,
+      "device_total_us": 159.1900000000005
+    },
+    {
+      "name": "aten::mm",
+      "calls": 4,
+      "self_device_us": 159.1900000000005,
+      "device_total_us": 159.1900000000005
+    },
+    {
+      "name": "Cijk_Alik_Bljk_HHS_BH_Bias_HA_S_SAV_UserArgs_MT192x128x64_MI16x16x1_SN_LDSB1_AFC1_AFEM1_AFEM1_ASEM1_CLR1_CADS0_DTLA0_DTLB0_DTVA0_DTVB0_EPS0_FDSI0_GRPM1_GRVWA8_GRVWB8_GSUAMBSK_GLS0_ISA942_IU1_K1_LDSTI0_LBSPPA512_LBSPPB256_LBSPPM0_LPA16_LPB16_LPM0_LRVW8_LWPMn1_MIAV0_MIWT12_2_MO40_NTn1_NTA0_NTB0_NTC0_NTD4_NTM0_NEPBS16_NLCA1_NLCB1_ONLL1_PGR2_PLR1_PKA1_SIA3_SS1_SPO0_SRVW0_SSO0_SVW4_SK0_SKFTR0_SKXCCM0_TLDS1_ULSGRO0_USL1_UIOFGRO0_USFGROn1_VSn1_VWA4_VWB2_WSGRA0_WSGRB0_WS64_WG16_16_1",
+      "calls": 4,
+      "self_device_us": 159.1900000000005,
+      "device_total_us": 159.1900000000005
+    },
+    {
+      "name": "void at::native::vectorized_elementwise_kernel<8, at::native::AUnaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul> >(int, at::native::AUnaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul>)",
+      "calls": 48,
+      "self_device_us": 149.73400000000015,
+      "device_total_us": 149.73400000000015
+    },
+    {
+      "name": "aten::zeros",
+      "calls": 48,
+      "self_device_us": 93.98999999998387,
+      "device_total_us": 93.98999999998387
+    },
+    {
+      "name": "aten::zero_",
+      "calls": 48,
+      "self_device_us": 93.98999999998387,
+      "device_total_us": 93.98999999998387
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "model": "bigscience/bloom-560m",
+  "bf16_ppl": 31.2395,
+  "fp8_ppl": 793.4081,
+  "delta_pct": 2439.76,
+  "n_linear_quantized": 97
+}

@@ -1,0 +1,48 @@
+# Default experiment configuration
+experiment:
+  name: "default_experiment"
+  description: "Default quantization experiment configuration"
+
+model:
+  path: "facebook/opt-125m"  # Small model for testing
+  base_precision: "fp16"
+  device: "cuda"
+
+quantization:
+  methods:
+    - "awq"
+  bit_width: 4
+  per_channel: true
+  activation_quant: false
+  kv_quant: false
+  group_size: 128
+
+calibration:
+  dataset: "wikitext2"
+  num_samples: 128
+  seq_length: 2048
+
+evaluation:
+  datasets:
+    - "wikitext2"
+  metrics:
+    - "perplexity"
+  batch_size: 1
+
+hardware:
+  profile: "default"
+  measure_latency: true
+  measure_power: false
+  warmup_iterations: 3
+  benchmark_iterations: 10
+
+hooks:
+  capture_weights: true
+  capture_activations: false
+  capture_kv: false
+
+scientist_report:
+  enabled: true
+  papers: []
+  temperature: 0.0
+  max_tokens: 2000

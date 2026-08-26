@@ -1,0 +1,7 @@
+{
+  "model": "mistralai/Mistral-7B-v0.1",
+  "bf16_ppl": 5.2524,
+  "fp8_ppl": 5.276,
+  "delta_pct": 0.45,
+  "n_linear_quantized": 225
+}

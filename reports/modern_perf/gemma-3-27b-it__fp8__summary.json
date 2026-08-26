@@ -1,0 +1,23 @@
+{
+  "model": "google/gemma-3-27b-it",
+  "format": "fp8",
+  "gpu": "7",
+  "duration_s": 214,
+  "tokens_per_second": 8899.5,
+  "requests_per_second": 7.725224438441232,
+  "model_weight_gb": 27.42,
+  "host_ram_gb": 9.5,
+  "peak_vram_gb": 178.8,
+  "mean_gpu_util_pct": 69.0,
+  "active_power_w": 505.0,
+  "peak_power_w": 752.0,
+  "energy_per_1k_tok_j": 56.75,
+  "n_power_samples": 422,
+  "vllm_bench": {
+    "elapsed_time": 25.88921546470374,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 7.725224438441232,
+    "tokens_per_second": 8899.4585530843
+  }
+}

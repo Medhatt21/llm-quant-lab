@@ -1,0 +1,23 @@
+{
+  "model": "qwen/Qwen3-30B-A3B",
+  "format": "fp8",
+  "gpu": "7",
+  "duration_s": 165,
+  "tokens_per_second": 24472.7,
+  "requests_per_second": 21.243664558041562,
+  "model_weight_gb": 29.03,
+  "host_ram_gb": 7.3,
+  "peak_vram_gb": 180.0,
+  "mean_gpu_util_pct": 48.6,
+  "active_power_w": 333.7,
+  "peak_power_w": 747.0,
+  "energy_per_1k_tok_j": 13.64,
+  "n_power_samples": 326,
+  "vllm_bench": {
+    "elapsed_time": 9.414571551606059,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 21.243664558041562,
+    "tokens_per_second": 24472.70157086388
+  }
+}

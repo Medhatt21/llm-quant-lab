@@ -1,0 +1,43 @@
+# =============================================================================
+# ROCm-specific overrides
+# Usage: docker compose -f docker-compose.yml -f docker-compose.rocm.yml up
+# =============================================================================
+services:
+  app:
+    build:
+      dockerfile: docker/Dockerfile.rocm-dev
+    ipc: host
+    # shm_size is only a fallback when ipc!=host; kept for safety on
+    # systems that ignore or override ipc settings.
+    shm_size: "16g"
+    cap_add:
+      - SYS_PTRACE
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    group_add:
+      - video
+      - render
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    environment:
+      - HIP_VISIBLE_DEVICES=${HIP_VISIBLE_DEVICES}
+
+  vllm:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.vllm-rocm
+    ipc: host
+    shm_size: "16g"
+    cap_add:
+      - SYS_PTRACE
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    group_add:
+      - video
+      - render
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined

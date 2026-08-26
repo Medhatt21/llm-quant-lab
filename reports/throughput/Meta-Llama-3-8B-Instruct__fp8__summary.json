@@ -1,0 +1,11 @@
+{
+  "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+  "format": "fp8",
+  "gpu": "3",
+  "duration_s": 52,
+  "mean_power_w": 150.792,
+  "peak_power_w": 213.0,
+  "approx_energy_j": 7841.184,
+  "n_power_samples": 125,
+  "vllm_bench": {}
+}

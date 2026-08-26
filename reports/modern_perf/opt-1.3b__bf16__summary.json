@@ -1,0 +1,23 @@
+{
+  "model": "facebook/opt-1.3b",
+  "format": "bf16",
+  "gpu": "7",
+  "duration_s": 78,
+  "tokens_per_second": 47096.6,
+  "requests_per_second": 40.88248187435807,
+  "model_weight_gb": 2.45,
+  "host_ram_gb": 4.1,
+  "peak_vram_gb": 180.2,
+  "mean_gpu_util_pct": 48.5,
+  "active_power_w": 311.5,
+  "peak_power_w": 752.0,
+  "energy_per_1k_tok_j": 6.61,
+  "n_power_samples": 155,
+  "vllm_bench": {
+    "elapsed_time": 4.8920709025114775,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 40.88248187435807,
+    "tokens_per_second": 47096.6191192605
+  }
+}

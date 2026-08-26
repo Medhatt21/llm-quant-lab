@@ -1,0 +1,7 @@
+{
+  "model": "facebook/opt-6.7b",
+  "bf16_ppl": 10.8564,
+  "fp8_ppl": 10.9425,
+  "delta_pct": 0.79,
+  "n_linear_quantized": 193
+}

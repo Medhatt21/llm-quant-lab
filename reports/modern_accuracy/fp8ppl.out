@@ -1,0 +1,12 @@
+=== meta-llama/Meta-Llama-3-8B-Instruct ===
+[fp8ppl] Meta-Llama-3-8B-Instruct BF16 wikitext2 ppl = 8.2898
+[fp8ppl] Meta-Llama-3-8B-Instruct FP8  wikitext2 ppl = 8.3548
+=== microsoft/phi-4 ===
+[fp8ppl] phi-4 BF16 wikitext2 ppl = 6.4607
+[fp8ppl] phi-4 FP8  wikitext2 ppl = 6.4904
+=== google/gemma-3-27b-it ===
+[fp8ppl] gemma-3-27b-it BF16 wikitext2 ppl = 15.0881
+[fp8ppl] gemma-3-27b-it FP8  wikitext2 ppl = 15.3905
+=== Qwen/Qwen3-32B ===
+[fp8ppl] Qwen3-32B BF16 wikitext2 ppl = 7.6102
+[fp8ppl] Qwen3-32B FP8  wikitext2 ppl = 7.6697

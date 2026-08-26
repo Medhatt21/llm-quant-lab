@@ -1,0 +1,45 @@
+[grid2] === meta-llama/Meta-Llama-3-8B-Instruct bf16 ===
+[perf] meta-llama/Meta-Llama-3-8B-Instruct fmt=bf16 gpu=7 img=rocm/vllm-dev:nightly
+[perf] meta-llama/Meta-Llama-3-8B-Instruct bf16: tok/s=21957.9 wt=14.96 ram=5.0 util=64.6% active_w=440.2 E/1k=20.05
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Meta-Llama-3-8B-Instruct__bf16__summary.json
+[grid2] === meta-llama/Meta-Llama-3-8B-Instruct fp8 ===
+[perf] meta-llama/Meta-Llama-3-8B-Instruct fmt=fp8 gpu=7 img=rocm/vllm-dev:nightly
+[perf] meta-llama/Meta-Llama-3-8B-Instruct fp8: tok/s=23657.3 wt=8.46 ram=7.0 util=57.6% active_w=386.9 E/1k=16.35
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Meta-Llama-3-8B-Instruct__fp8__summary.json
+[grid2] === microsoft/phi-4 bf16 ===
+[perf] microsoft/phi-4 fmt=bf16 gpu=7 img=rocm/vllm-dev:nightly
+[perf] microsoft/phi-4 bf16: tok/s=13168.4 wt=27.39 ram=6.7 util=73.2% active_w=564.2 E/1k=42.84
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/phi-4__bf16__summary.json
+[grid2] === microsoft/phi-4 fp8 ===
+[perf] microsoft/phi-4 fmt=fp8 gpu=7 img=rocm/vllm-dev:nightly
+[perf] microsoft/phi-4 fp8: tok/s=17635.7 wt=14.62 ram=6.1 util=65.3% active_w=464.7 E/1k=26.35
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/phi-4__fp8__summary.json
+[grid2] === google/gemma-3-27b-it bf16 ===
+[perf] google/gemma-3-27b-it fmt=bf16 gpu=7 img=rocm/vllm-dev:nightly
+[perf] google/gemma-3-27b-it bf16: tok/s=5942.8 wt=51.45 ram=8.7 util=73.9% active_w=648.0 E/1k=109.04
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/gemma-3-27b-it__bf16__summary.json
+[grid2] === google/gemma-3-27b-it fp8 ===
+[perf] google/gemma-3-27b-it fmt=fp8 gpu=7 img=rocm/vllm-dev:nightly
+[perf] google/gemma-3-27b-it fp8: tok/s=8899.5 wt=27.42 ram=9.5 util=69.0% active_w=505.0 E/1k=56.75
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/gemma-3-27b-it__fp8__summary.json
+[grid2] === Qwen/Qwen3-32B bf16 ===
+[perf] Qwen/Qwen3-32B fmt=bf16 gpu=7 img=rocm/vllm-dev:nightly
+[perf] Qwen/Qwen3-32B bf16: tok/s=6444.8 wt=61.03 ram=5.5 util=80.4% active_w=687.2 E/1k=106.62
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Qwen3-32B__bf16__summary.json
+[grid2] === Qwen/Qwen3-32B fp8 ===
+[perf] Qwen/Qwen3-32B fmt=fp8 gpu=7 img=rocm/vllm-dev:nightly
+[perf] Qwen/Qwen3-32B fp8: tok/s=9997.5 wt=31.98 ram=7.0 util=71.5% active_w=564.0 E/1k=56.41
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Qwen3-32B__fp8__summary.json
+[grid2] === qwen/Qwen3-30B-A3B bf16 ===
+[perf] qwen/Qwen3-30B-A3B fmt=bf16 gpu=7 img=rocm/vllm-dev:nightly
+[perf] qwen/Qwen3-30B-A3B bf16: tok/s=21590.5 wt=56.88 ram=6.3 util=50.8% active_w=366.4 E/1k=16.97
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Qwen3-30B-A3B__bf16__summary.json
+[grid2] === qwen/Qwen3-30B-A3B fp8 ===
+[perf] qwen/Qwen3-30B-A3B fmt=fp8 gpu=7 img=rocm/vllm-dev:nightly
+[perf] qwen/Qwen3-30B-A3B fp8: tok/s=24472.7 wt=29.03 ram=7.3 util=48.6% active_w=333.7 E/1k=13.64
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Qwen3-30B-A3B__fp8__summary.json
+[grid2] === Llama-4-Scout (native FP8 ckpt) ===
+[perf] RedHatAI/Llama-4-Scout-17B-16E-Instruct-FP8-dynamic fmt=native gpu=7 img=rocm/vllm-dev:nightly
+[perf] RedHatAI/Llama-4-Scout-17B-16E-Instruct-FP8-dynamic native: tok/s=10669.6 wt=109.35 ram=107.9 util=60.2% active_w=440.4 E/1k=41.27
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Llama-4-Scout-17B-16E-Instruct-FP8-dynamic__native__summary.json
+[grid2] done

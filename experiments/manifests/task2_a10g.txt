@@ -1,0 +1,7 @@
+experiments/configs/2569_awq_w4.yml
+experiments/configs/2668_awq_w4.yml
+experiments/configs/2562_smoothquant_w8.yml
+experiments/configs/2658_smoothquant_w8.yml
+experiments/configs/2572_awq_w4.yml
+experiments/configs/2664_awq_w4.yml
+experiments/configs/2662_smoothquant_w8.yml

@@ -1,0 +1,23 @@
+{
+  "model": "Salesforce/Llama-xLAM-2-70b-fc-r",
+  "format": "bf16",
+  "gpu": "7",
+  "duration_s": 264,
+  "tokens_per_second": 2772.3,
+  "requests_per_second": 2.406540978573336,
+  "model_weight_gb": 131.45,
+  "host_ram_gb": 7.0,
+  "peak_vram_gb": 183.3,
+  "mean_gpu_util_pct": 84.6,
+  "active_power_w": 750.0,
+  "peak_power_w": 754.0,
+  "energy_per_1k_tok_j": 270.52,
+  "n_power_samples": 522,
+  "vllm_bench": {
+    "elapsed_time": 83.1068333266303,
+    "num_requests": 200,
+    "total_num_tokens": 230400,
+    "requests_per_second": 2.406540978573336,
+    "tokens_per_second": 2772.335207316483
+  }
+}

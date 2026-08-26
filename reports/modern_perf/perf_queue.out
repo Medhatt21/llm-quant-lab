@@ -1,0 +1,40 @@
+[perfq] waiting for GPU 7 free before qwen/Qwen3-30B-A3B bf16 ...
+[perfq] === qwen/Qwen3-30B-A3B bf16 ===
+[perf] qwen/Qwen3-30B-A3B fmt=bf16 gpu=7 img=rocm/vllm:rocm7.0.0_vllm_0.11.2_20251210
+[perf] qwen/Qwen3-30B-A3B bf16: tok/s=20278.6 weight_gb=None active_w=389.2 E/1k=19.19
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Qwen3-30B-A3B__bf16__summary.json
+[perfq] waiting for GPU 7 free before Qwen/Qwen3-32B bf16 ...
+[perfq] === Qwen/Qwen3-32B bf16 ===
+[perf] Qwen/Qwen3-32B fmt=bf16 gpu=7 img=rocm/vllm:rocm7.0.0_vllm_0.11.2_20251210
+[perf] Qwen/Qwen3-32B bf16: tok/s=5951.4 weight_gb=None active_w=707.8 E/1k=118.93
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Qwen3-32B__bf16__summary.json
+[perfq] waiting for GPU 7 free before google/gemma-3-27b-it bf16 ...
+[perfq] === google/gemma-3-27b-it bf16 ===
+[perf] google/gemma-3-27b-it fmt=bf16 gpu=7 img=rocm/vllm:rocm7.0.0_vllm_0.11.2_20251210
+[perf] google/gemma-3-27b-it bf16: tok/s=3163.7 weight_gb=None active_w=652.9 E/1k=206.38
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/gemma-3-27b-it__bf16__summary.json
+[perfq] waiting for GPU 7 free before qwen/Qwen3-30B-A3B fp8 ...
+[perfq] === qwen/Qwen3-30B-A3B fp8 ===
+[perf] qwen/Qwen3-30B-A3B fmt=fp8 gpu=7 img=rocm/vllm:rocm7.0.0_vllm_0.11.2_20251210
+[perf] vLLM returned nonzero (see /data/llm-quant-lab/reports/modern_perf/Qwen3-30B-A3B__fp8.log)
+[perf] qwen/Qwen3-30B-A3B fp8: tok/s=None weight_gb=None active_w=222.2 E/1k=None
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Qwen3-30B-A3B__fp8__summary.json
+[perfq] waiting for GPU 7 free before Qwen/Qwen3-32B fp8 ...
+[perfq] === Qwen/Qwen3-32B fp8 ===
+[perf] Qwen/Qwen3-32B fmt=fp8 gpu=7 img=rocm/vllm:rocm7.0.0_vllm_0.11.2_20251210
+[perf] vLLM returned nonzero (see /data/llm-quant-lab/reports/modern_perf/Qwen3-32B__fp8.log)
+[perf] Qwen/Qwen3-32B fp8: tok/s=None weight_gb=None active_w=207.8 E/1k=None
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Qwen3-32B__fp8__summary.json
+[perfq] waiting for GPU 7 free before google/gemma-3-27b-it fp8 ...
+[perfq] === google/gemma-3-27b-it fp8 ===
+[perf] google/gemma-3-27b-it fmt=fp8 gpu=7 img=rocm/vllm:rocm7.0.0_vllm_0.11.2_20251210
+[perf] vLLM returned nonzero (see /data/llm-quant-lab/reports/modern_perf/gemma-3-27b-it__fp8.log)
+[perf] google/gemma-3-27b-it fp8: tok/s=None weight_gb=None active_w=202.6 E/1k=None
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/gemma-3-27b-it__fp8__summary.json
+[perfq] waiting for GPU 7 free before RedHatAI/Llama-4-Scout-17B-16E-Instruct-FP8-dynamic fp8 ...
+[perfq] === RedHatAI/Llama-4-Scout-17B-16E-Instruct-FP8-dynamic fp8 ===
+[perf] RedHatAI/Llama-4-Scout-17B-16E-Instruct-FP8-dynamic fmt=fp8 gpu=7 img=rocm/vllm:rocm7.0.0_vllm_0.11.2_20251210
+[perf] vLLM returned nonzero (see /data/llm-quant-lab/reports/modern_perf/Llama-4-Scout-17B-16E-Instruct-FP8-dynamic__fp8.log)
+[perf] RedHatAI/Llama-4-Scout-17B-16E-Instruct-FP8-dynamic fp8: tok/s=None weight_gb=None active_w=178.3 E/1k=None
+[perf] done -> /data/llm-quant-lab/reports/modern_perf/Llama-4-Scout-17B-16E-Instruct-FP8-dynamic__fp8__summary.json
+[perfq] done
